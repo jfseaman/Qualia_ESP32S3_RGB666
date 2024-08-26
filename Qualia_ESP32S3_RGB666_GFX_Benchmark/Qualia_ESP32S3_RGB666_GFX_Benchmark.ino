@@ -11,6 +11,31 @@ It will take a couple itterations through bootsel/port to get the coms stabalize
 
 #include <Arduino_GFX_Library.h>
 #include <Adafruit_GFX.h>
+#include <fonts/FreeMono24pt7b.h>
+#include <fonts/FreeMono18pt7b.h>
+#include <fonts/FreeMono12pt7b.h>
+#include <fonts/FreeMono9pt7b.h>
+#include <fonts/FreeMonoBold24pt7b.h>
+#include <fonts/FreeMonoBold18pt7b.h>
+#include <fonts/FreeMonoBold12pt7b.h>
+#include <fonts/FreeMonoBold9pt7b.h>
+#include <fonts/FreeSansBold12pt7b.h>
+#include <fonts/FreeSans24pt7b.h>
+#include <fonts/FreeSans18pt7b.h>
+#include <fonts/FreeSans12pt7b.h>
+#include <fonts/FreeSans9pt7b.h>
+#include <fonts/FreeSansBold24pt7b.h>
+#include <fonts/FreeSansBold18pt7b.h>
+#include <fonts/FreeSansBold12pt7b.h>
+#include <fonts/FreeSansBold9pt7b.h>
+#include <fonts/FreeSerif24pt7b.h>
+#include <fonts/FreeSerif18pt7b.h>
+#include <fonts/FreeSerif12pt7b.h>
+#include <fonts/FreeSerif9pt7b.h>
+#include <fonts/FreeSerifBold24pt7b.h>
+#include <fonts/FreeSerifBold18pt7b.h>
+#include <fonts/FreeSerifBold12pt7b.h>
+#include <fonts/FreeSerifBold9pt7b.h>
 
 #define SCREEN_WIDTH 720
 #define SCREEN_HEIGHT 720
@@ -105,9 +130,130 @@ void runBenchmark(void) {
   Serial.println(testFillScreen());
   delay(TEST_DELAY);
 
-  Serial.print(F("Text                     "));
-  Serial.println(testText());
-  delay(TEST_DELAY*4);
+  gfx->setFont();
+  Serial.print(F("Text default             "));
+  Serial.println(testText(0, 3));
+  delay(TEST_DELAY * 4);
+
+  gfx->setFont(&FreeMono24pt7b);
+  Serial.print(F("Text Mono24              "));
+  Serial.println(testText(rotation, rotation));
+  delay(TEST_DELAY * 4);
+
+  gfx->setFont(&FreeMono18pt7b);
+  Serial.print(F("Text Mono18              "));
+  Serial.println(testText(rotation, rotation));
+  delay(TEST_DELAY * 4);
+
+  gfx->setFont(&FreeMono12pt7b);
+  Serial.print(F("Text Mono12              "));
+  Serial.println(testText(rotation, rotation));
+  delay(TEST_DELAY * 4);
+
+  gfx->setFont(&FreeMono9pt7b);
+  Serial.print(F("Text Mono9               "));
+  Serial.println(testText(rotation, rotation));
+  delay(TEST_DELAY * 4);
+
+  gfx->setFont(&FreeMonoBold24pt7b);
+  Serial.print(F("Text MonoBold24          "));
+  Serial.println(testText(rotation, rotation));
+  delay(TEST_DELAY * 4);
+
+  gfx->setFont(&FreeMonoBold18pt7b);
+  Serial.print(F("Text MonoBold18          "));
+  Serial.println(testText(rotation, rotation));
+  delay(TEST_DELAY * 4);
+
+  gfx->setFont(&FreeMonoBold12pt7b);
+  Serial.print(F("Text MonoBold12          "));
+  Serial.println(testText(rotation, rotation));
+  delay(TEST_DELAY * 4);
+
+  gfx->setFont(&FreeMonoBold9pt7b);
+  Serial.print(F("Text MonoBold9           "));
+  Serial.println(testText(rotation, rotation));
+  delay(TEST_DELAY * 4);
+
+  gfx->setFont(&FreeSans24pt7b);
+  Serial.print(F("Text Sans24              "));
+  Serial.println(testText(rotation, rotation));
+  delay(TEST_DELAY * 4);
+
+  gfx->setFont(&FreeSans18pt7b);
+  Serial.print(F("Text Sans18              "));
+  Serial.println(testText(rotation, rotation));
+  delay(TEST_DELAY * 4);
+
+  gfx->setFont(&FreeSans12pt7b);
+  Serial.print(F("Text Sans12              "));
+  Serial.println(testText(rotation, rotation));
+  delay(TEST_DELAY * 4);
+
+  gfx->setFont(&FreeSans9pt7b);
+  Serial.print(F("Text Sans9               "));
+  Serial.println(testText(rotation, rotation));
+  delay(TEST_DELAY * 4);
+
+  gfx->setFont(&FreeSansBold24pt7b);
+  Serial.print(F("Text SansBold24          "));
+  Serial.println(testText(rotation, rotation));
+  delay(TEST_DELAY * 4);
+
+  gfx->setFont(&FreeSansBold18pt7b);
+  Serial.print(F("Text SansBold18          "));
+  Serial.println(testText(rotation, rotation));
+  delay(TEST_DELAY * 4);
+
+  gfx->setFont(&FreeSansBold12pt7b);
+  Serial.print(F("Text SansBold12          "));
+  Serial.println(testText(rotation, rotation));
+  delay(TEST_DELAY * 4);
+
+  gfx->setFont(&FreeSansBold9pt7b);
+  Serial.print(F("Text SansBold9           "));
+  Serial.println(testText(rotation, rotation));
+  delay(TEST_DELAY * 4);
+
+  gfx->setFont(&FreeSerif24pt7b);
+  Serial.print(F("Text Serif24             "));
+  Serial.println(testText(rotation, rotation));
+  delay(TEST_DELAY * 4);
+
+  gfx->setFont(&FreeSerif18pt7b);
+  Serial.print(F("Text Serif18             "));
+  Serial.println(testText(rotation, rotation));
+  delay(TEST_DELAY * 4);
+
+  gfx->setFont(&FreeSerif12pt7b);
+  Serial.print(F("Text Serif12             "));
+  Serial.println(testText(rotation, rotation));
+  delay(TEST_DELAY * 4);
+
+  gfx->setFont(&FreeSerif9pt7b);
+  Serial.print(F("Text Serif9              "));
+  Serial.println(testText(rotation, rotation));
+  delay(TEST_DELAY * 4);
+
+  gfx->setFont(&FreeSerifBold24pt7b);
+  Serial.print(F("Text SerifBold24         "));
+  Serial.println(testText(rotation, rotation));
+  delay(TEST_DELAY * 4);
+
+  gfx->setFont(&FreeSerifBold18pt7b);
+  Serial.print(F("Text SerifBold18         "));
+  Serial.println(testText(rotation, rotation));
+  delay(TEST_DELAY * 4);
+
+  gfx->setFont(&FreeSerifBold12pt7b);
+  Serial.print(F("Text SerifBold12         "));
+  Serial.println(testText(rotation, rotation));
+  delay(TEST_DELAY * 4);
+
+  gfx->setFont(&FreeSerifBold9pt7b);
+  Serial.print(F("Text SerifBold9          "));
+  Serial.println(testText(rotation, rotation));
+  delay(TEST_DELAY * 4);
 
   Serial.print(F("Lines                    "));
   Serial.println(testLines(CYAN));
@@ -296,10 +442,11 @@ unsigned long testFillScreen() {
   return t;
 }
 
-unsigned long testText() {
-  unsigned long start = micros();
+unsigned long testText(uint8_t rotS, uint8_t rotE) {
   gfx->fillScreen(BLACK);
-  for (uint8_t rot = 0; rot < 4; rot++) {
+  uint8_t rot = rotS; // starting rotation position
+  unsigned long start = micros();
+  do {
     gfx->setRotation(rot);
     gfx->setCursor(TEXT_X, TEXT_Y);
     gfx->setCursor(testTextMakeX(), gfx->getCursorY());
@@ -339,9 +486,9 @@ unsigned long testText() {
     gfx->setCursor(testTextMakeX(), gfx->getCursorY());
     gfx->println("see if I don't!");
     gfx->setCursor(testTextMakeX(), gfx->getCursorY());
-  }
+  } while (++rot <= rotE);
   unsigned long t = micros() - start;
-  delay(TEST_DELAY * 4);
+  // delay(TEST_DELAY * 4);
   gfx->setRotation(rotation);  // put the rotation back
   return t;
 }
