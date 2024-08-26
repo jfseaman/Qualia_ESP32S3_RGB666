@@ -50,11 +50,11 @@ Arduino_RGB_Display *gfx = new Arduino_RGB_Display(
 #define TIMES_TO_SHOW 200
 uint16_t times_to_cls = TIMES_TO_SHOW;
 
-void setup(void)
-{
+void setup(void) {
   Serial.begin(115200);
   Serial.setDebugOutput(true);
-  while(!Serial);
+  while (!Serial)
+    ;
   Serial.println("Arduino_GFX Hello World example");
 
 #ifdef GFX_EXTRA_PRE_INIT
@@ -62,8 +62,7 @@ void setup(void)
 #endif
 
   // Init Display
-  if (!gfx->begin())
-  {
+  if (!gfx->begin()) {
     Serial.println("gfx->begin() failed!");
   }
   gfx->fillScreen(BLACK);
@@ -72,20 +71,20 @@ void setup(void)
   pinMode(GFX_BL, OUTPUT);
   digitalWrite(GFX_BL, HIGH);
 #endif
-
+  randomSeed(millis());
   gfx->setCursor(10, 10);
   gfx->setTextColor(RED);
   gfx->println("Hello World!");
 
-  delay(2000); // 5 seconds
+  delay(DELAY_TIME);  // 5 seconds
 }
 
-void loop()
-{
-  if(!(--times_to_cls)){
+void loop() {
+  if (!(--times_to_cls)) {
     Serial.println("Clear screen and repeating");
-    delay(DELAY_TIME);
+    // delay(DELAY_TIME);
     gfx->fillScreen(BLACK);
+    randomSeed(millis());
     times_to_cls = TIMES_TO_SHOW;
   }
   gfx->setCursor(random(gfx->width()), random(gfx->height()));
@@ -93,5 +92,5 @@ void loop()
   gfx->setTextSize(random(6) /* x scale */, random(6) /* y scale */, random(2) /* pixel_margin */);
   gfx->println("Hello World!");
 
-  delay(DELAY_TIME); // 1 second
+  delay(DELAY_TIME);  // 1 second
 }
