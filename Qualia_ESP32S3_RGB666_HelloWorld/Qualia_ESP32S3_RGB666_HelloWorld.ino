@@ -46,12 +46,15 @@ Arduino_RGB_Display *gfx = new Arduino_RGB_Display(
 /*******************************************************************************
  * End of Arduino_GFX setting
  ******************************************************************************/
+#define DELAY_TIME 100
+#define TIMES_TO_SHOW 200
+uint16_t times_to_cls = TIMES_TO_SHOW;
 
 void setup(void)
 {
   Serial.begin(115200);
-  // Serial.setDebugOutput(true);
-  // while(!Serial);
+  Serial.setDebugOutput(true);
+  while(!Serial);
   Serial.println("Arduino_GFX Hello World example");
 
 #ifdef GFX_EXTRA_PRE_INIT
@@ -74,15 +77,21 @@ void setup(void)
   gfx->setTextColor(RED);
   gfx->println("Hello World!");
 
-  delay(5000); // 5 seconds
+  delay(2000); // 5 seconds
 }
 
 void loop()
 {
+  if(!(--times_to_cls)){
+    Serial.println("Clear screen and repeating");
+    delay(DELAY_TIME);
+    gfx->fillScreen(BLACK);
+    times_to_cls = TIMES_TO_SHOW;
+  }
   gfx->setCursor(random(gfx->width()), random(gfx->height()));
   gfx->setTextColor(random(0xffff), random(0xffff));
   gfx->setTextSize(random(6) /* x scale */, random(6) /* y scale */, random(2) /* pixel_margin */);
   gfx->println("Hello World!");
 
-  delay(1000); // 1 second
+  delay(DELAY_TIME); // 1 second
 }
