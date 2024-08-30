@@ -8,7 +8,9 @@ for Boards from 3.0.0 on so
 be sure to revert to 2.0.17 of boards.
 It will take a couple itterations through bootsel/port to get the coms stabalized.
 */
-
+/*******************************************************************************
+ * Start of Arduino_GFX setting
+ ******************************************************************************/
 #include <Arduino_GFX_Library.h>
 #include <Adafruit_GFX.h>
 #include <fonts/FreeMono24pt7b.h>
