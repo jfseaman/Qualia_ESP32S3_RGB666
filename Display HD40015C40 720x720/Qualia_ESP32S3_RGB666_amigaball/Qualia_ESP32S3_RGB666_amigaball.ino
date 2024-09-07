@@ -30,7 +30,9 @@ Arduino_ESP32RGBPanel *rgbpanel = new Arduino_ESP32RGBPanel(
   TFT_B1, TFT_B2, TFT_B3, TFT_B4, TFT_B5,
   1 /* hync_polarity */, 46 /* hsync_front_porch */, 2 /* hsync_pulse_width */, 44 /* hsync_back_porch */,
   1 /* vsync_polarity */, 50 /* vsync_front_porch */, 16 /* vsync_pulse_width */, 16 /* vsync_back_porch */
-                                                                                     //    ,1, 30000000
+  // , 1, 30000000 /* This makes fast text drawing but slow for all block fills and jitter*/
+  , 1, 6000000L /* Seems to provide best performance, no jitter */
+  // , 1, 12000000L /* Max idle */
 );
 
 Arduino_RGB_Display *lcd = new Arduino_RGB_Display(

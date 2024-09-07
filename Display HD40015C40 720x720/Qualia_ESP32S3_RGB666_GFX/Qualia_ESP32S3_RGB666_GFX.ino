@@ -8,10 +8,9 @@ for Boards from 3.0.0 on so
 be sure to revert to 2.0.17 of boards.
 It will take a couple itterations through bootsel/port to get the coms stabalized.
 */
-/*******************************************************************************
- * Start of Arduino_GFX setting
- ******************************************************************************/
+
 #include <Arduino_GFX_Library.h>
+#include <Adafruit_GFX.h>
 
 #define SCREEN_WIDTH 720
 #define SCREEN_HEIGHT 720
@@ -28,17 +27,17 @@ Arduino_ESP32RGBPanel *rgbpanel = new Arduino_ESP32RGBPanel(
   TFT_B1, TFT_B2, TFT_B3, TFT_B4, TFT_B5,
   1 /* hync_polarity */, 46 /* hsync_front_porch */, 2 /* hsync_pulse_width */, 44 /* hsync_back_porch */,
   1 /* vsync_polarity */, 50 /* vsync_front_porch */, 16 /* vsync_pulse_width */, 16 /* vsync_back_porch */
-                                                                                     //    ,1, 30000000
+  // , 1, 30000000 /* This makes fast text drawing but slow for all block fills and jitter*/
+  , 1, 6000000L /* Seems to provide best performance, no jitter */
+  // , 1, 12000000L /* Max idle */
 );
 
 Arduino_RGB_Display *gfx = new Arduino_RGB_Display(
-  SCREEN_WIDTH /* width */, SCREEN_WIDTH /* height */, rgbpanel, 0 /* rotation */, true /* auto_flush */,
+  SCREEN_WIDTH /* width */, SCREEN_HEIGHT /* height */, rgbpanel, 0 /* rotation */, true /* auto_flush */,
   expander, GFX_NOT_DEFINED /* RST */, hd40015c40_init_operations, sizeof(hd40015c40_init_operations));
 /*******************************************************************************
  * End of Arduino_GFX setting
  ******************************************************************************/
- 
-int times_to_test = 1000;
 
 void setup(void) {
   Serial.begin(115200);
@@ -59,60 +58,19 @@ void setup(void) {
   }
   gfx->fillScreen(BLACK);
   Serial.println("Initialized!");
+
+  gfx->setCursor(100, 100);
+  gfx->setTextColor(RED);
+  gfx->println("Hello World!");
+
+  delay(1000);  // 5 seconds
 }
 
 void loop() {
-  // use the buttons to turn off
-  if (!expander->digitalRead(PCA_BUTTON_DOWN)) {
-    expander->digitalWrite(PCA_TFT_BACKLIGHT, LOW);
-  }
-  // and on the backlight
-  if (!expander->digitalRead(PCA_BUTTON_UP)) {
-    expander->digitalWrite(PCA_TFT_BACKLIGHT, HIGH);
-  }
-  if (times_to_test == 1000) {
-    Serial.println("Begin drawing screen.");
-  }
-  while (times_to_test) {
-    gfx->setTextColor(GREEN);
-    for (int x = 0; x < 16; x++) {
-      gfx->setCursor(10 + x * 8, 2);
-      gfx->print(x + 25, 16);
-    }
-    gfx->setTextColor(BLUE);
-    for (int y = 0; y < 16; y++) {
-      gfx->setCursor(2, 12 + y * 10);
-      gfx->print(y + 27, 16);
-    }
+  gfx->setCursor(random(gfx->width()), random(gfx->height()));
+  gfx->setTextColor(random(0xffff), random(0xffff));
+  gfx->setTextSize(random(6) /* x scale */, random(6) /* y scale */, random(2) /* pixel_margin */);
+  gfx->println("Hello World!");
 
-    for (int x = 0; x < 16; x++) {
-      gfx->setCursor(10 + x * 8, 2);
-      gfx->print(x + 45, 16);
-    }
-    gfx->setTextColor(BLUE);
-    for (int y = 0; y < 16; y++) {
-      gfx->setCursor(2, 12 + y * 10);
-      gfx->print(y + 27, 16);
-    }
-
-    char c = 0;
-    for (int y = 0; y < 16; y++) {
-      for (int x = 0; x < 16; x++) {
-        gfx->drawChar(10 + (x + 25) * 8, 12 + (y + 27) * 10, c++, WHITE, BLACK);
-      }
-    }
-
-    c = 0;
-    for (int y = 0; y < 16; y++) {
-      for (int x = 0; x < 16; x++) {
-        gfx->drawChar(10 + (x + 45) * 8, 12 + (y + 27) * 10, c++, WHITE, BLACK);
-      }
-    }
-
-    --times_to_test;
-  }
-  if (times_to_test == 0) {
-    Serial.println("Drawing done.");
-    --times_to_test;
-  }
+  delay(1000);  // 1 second
 }
