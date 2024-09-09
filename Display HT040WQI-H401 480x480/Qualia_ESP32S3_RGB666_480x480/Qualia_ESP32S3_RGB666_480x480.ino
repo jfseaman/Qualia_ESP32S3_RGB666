@@ -21,6 +21,8 @@ It will take a couple itterations through bootsel/port to get the coms stabalize
 #define TOUCH_INT 16
 #define TOUCH_RST -1
 
+int foo = PCA
+
 Arduino_XCA9554SWSPI *expander = new Arduino_XCA9554SWSPI(
   PCA_TFT_RESET, PCA_TFT_CS, PCA_TFT_SCK, PCA_TFT_MOSI,
   &Wire, 0x3F);
@@ -120,6 +122,8 @@ void setup(void) {
   Serial.println("Drawing done.");
   Serial.println("Setting up touch screen.");
   tp.begin(I2C_TOUCH_ADDR);
+  tp.setRotation(ROTATION_NORMAL); // This also serves as an internal TP reset so there are not floating values on loop start.
+  Serial.println("Done.");
   touchOK = true;
   // if (!focal_ctp.begin(0, &Wire, I2C_TOUCH_ADDR)) {
   //   // Try the CST826 Touch Screen
