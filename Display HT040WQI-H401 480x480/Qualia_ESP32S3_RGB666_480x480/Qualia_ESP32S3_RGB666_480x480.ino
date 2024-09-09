@@ -21,8 +21,6 @@ It will take a couple itterations through bootsel/port to get the coms stabalize
 #define TOUCH_INT 16
 #define TOUCH_RST -1
 
-int foo = PCA
-
 Arduino_XCA9554SWSPI *expander = new Arduino_XCA9554SWSPI(
   PCA_TFT_RESET, PCA_TFT_CS, PCA_TFT_SCK, PCA_TFT_MOSI,
   &Wire, 0x3F);
