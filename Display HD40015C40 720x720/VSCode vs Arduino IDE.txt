@@ -1,0 +1,120 @@
+VSCode vs Arduino IDE
+
+Text_Text
+VSCode
+16:31:01:547 -> Beginning
+16:31:01:552 -> Initialize GFX.
+16:31:04:429 -> Initialized!
+16:31:04:430 -> Begin drawing screen.
+16:31:46:345 -> Drawing done.
+      41:950
+
+Arduino IDE
+16:37:38.699 -> Beginning
+16:37:38.699 -> Initialize GFX.
+16:37:41.580 -> Initialized!
+16:37:41.580 -> Begin drawing screen.
+16:38:23.498 -> Drawing done.
+      41:918
+No difference
+
+GFX_Benchmark
+VSCode
+19:11:31:773 -> Beginning
+19:11:31:788 -> Initialize gfx->
+19:11:34:623 -> RoundMode enabled.
+19:11:34:661 -> Initialized! 2:873
+19:11:34:662 -> Generating colorwheel
+19:11:36:984 -> Done.
+19:11:36:985 -> Benchmark                Time (microseconds)
+19:11:37:487 -> Screen fill Once RED     37668
+19:11:42:922 -> Screen fill Once BLUE    37534
+19:11:48:372 -> Screen fill Once GREEN   39133
+19:11:53:799 -> Fill ................... 718777
+19:12:02:625 -> Text default             31120
+19:12:04:693 -> Text Mono24              29253
+19:12:06:761 -> Text Mono18              17956
+19:12:08:818 -> Text Mono12              20240
+19:12:10:877 -> Text Mono9               14938
+19:12:12:930 -> Text MonoBold24          65760
+19:12:15:034 -> Text MonoBold18          56414
+19:12:17:127 -> Text MonoBold12          40290
+19:12:19:206 -> Text MonoBold9           26862
+19:12:21:270 -> Text Sans24              45727
+19:12:23:353 -> Text Sans18              39848
+19:12:25:430 -> Text Sans12              31903
+19:12:27:501 -> Text Sans9               22018
+19:12:29:562 -> Text SansBold24          66117
+19:12:31:668 -> Text SansBold18          54773
+19:12:33:762 -> Text SansBold12          49654
+19:12:35:849 -> Text SansBold9           32237
+19:12:37:920 -> Text Serif24             35582
+19:12:39:995 -> Text Serif18             33272
+19:12:42:066 -> Text Serif12             24607
+19:12:44:127 -> Text Serif9              20021
+19:12:46:186 -> Text SerifBold24         51468
+19:12:48:274 -> Text SerifBold18         45330
+19:12:50:359 -> Text SerifBold12         38039
+19:12:52:435 -> Text SerifBold9          27305
+19:12:54:500 -> Lines                    238473
+19:12:56:102 -> Horiz/Vert Lines         163755
+19:12:56:804 -> Rectangles (outline)     149572
+19:12:57:494 -> Rectangles (filled)      1606371
+19:12:59:805 -> Circles (filled)         146597
+19:13:00:489 -> Circles (outline)        129081
+19:13:01:118 -> Triangles (outline)      101019
+19:13:01:757 -> Triangles (filled)       730892
+19:13:03:141 -> Rounded rects (outline)  160646
+19:13:03:839 -> Rounded rects (filled)   1764464
+19:13:06:140 -> Color Wheel              61478
+19:13:06:741 -> Done!
+
+Ardiuino IDE
+17:04:12.158 -> Beginning
+17:04:12.158 -> Initialize gfx->
+17:04:14.985 -> RoundMode enabled.
+17:04:15.052 -> Initialized! 2:894
+17:04:15.052 -> Generating colorwheel
+17:04:17.350 -> Done.
+17:04:17.350 -> Benchmark                Time (microseconds)
+17:04:17.868 -> Screen fill Once RED     37692-37668
+17:04:23.316 -> Screen fill Once BLUE    37580-37534
+17:04:28.741 -> Screen fill Once GREEN   39176-39133
+17:04:34.164 -> Fill ................... 719565-718777
+17:04:42.988 -> Text default             31132
+17:04:45.072 -> Text Mono24              29237
+17:04:47.154 -> Text Mono18              17962
+17:04:49.195 -> Text Mono12              20206
+17:04:51.265 -> Text Mono9               14931
+17:04:53.293 -> Text MonoBold24          65738
+17:04:55.433 -> Text MonoBold18          56437
+17:04:57.489 -> Text MonoBold12          40277
+17:04:59.570 -> Text MonoBold9           26818
+17:05:01.633 -> Text Sans24              45671
+17:05:03.740 -> Text Sans18              39928
+17:05:05.826 -> Text Sans12              31924
+17:05:07.878 -> Text Sans9               22098
+17:05:09.932 -> Text SansBold24          66160
+17:05:12.060 -> Text SansBold18          54774
+17:05:14.149 -> Text SansBold12          49653
+17:05:16.212 -> Text SansBold9           32225
+17:05:18.287 -> Text Serif24             35608
+17:05:20.371 -> Text Serif18             33249
+17:05:22.428 -> Text Serif12             24576
+17:05:24.523 -> Text Serif9              19994
+17:05:26.577 -> Text SerifBold24         51454
+17:05:28.662 -> Text SerifBold18         45341
+17:05:30.731 -> Text SerifBold12         38006
+17:05:32.800 -> Text SerifBold9          27282
+17:05:34.862 -> Lines                    238518
+17:05:36.484 -> Horiz/Vert Lines         163623
+17:05:37.200 -> Rectangles (outline)     149538
+17:05:37.898 -> Rectangles (filled)      1608287
+17:05:40.210 -> Circles (filled)         146563
+17:05:40.854 -> Circles (outline)        129116
+17:05:41.483 -> Triangles (outline)      101033
+17:05:42.122 -> Triangles (filled)       731346
+17:05:43.527 -> Rounded rects (outline)  160665
+17:05:44.204 -> Rounded rects (filled)   1764364
+17:05:46.528 -> Color Wheel              60959
+17:05:47.107 -> Done!
