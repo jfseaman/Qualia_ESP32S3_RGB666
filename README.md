@@ -7,3 +7,7 @@ of c++ much.
 
 There are notable differences from the "Example" programs most of these where created from. One 
 is that for these types of programs, I have it so that Serial output waits for a connection from 
+
+Notes on VSCode versions:
+In platformio.ini you will need to fixup the lib_extra_dir to point to your Arduino IDE libaries location 
+or add libraries to the local project folder.
