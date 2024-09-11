@@ -36,3 +36,5 @@ Make your selection according to the table below
 
     If you lose your ability to upload without power cycle+ boot0 then reload 
     the factory firmware using https://adafruit.github.io/Adafruit_WebSerial_ESPTool/
+    and upload a shetch while still in bootsel mode. After that your ability to upload
+    should be fixed.
