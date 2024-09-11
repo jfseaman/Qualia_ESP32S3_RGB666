@@ -13,6 +13,7 @@ In platformio.ini you will need to fixup the lib_extra_dir to point to your Ardu
 or add libraries to the local project folder.
 
 Make your selection according to the table below
+
     | Arduino IDE Setting                  | Value                                |
     | ------------------------------------ | ------------------------------------ |
     | Board                                | **Adafruit Qualia ESP32-S3 RGB666**  |
