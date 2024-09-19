@@ -73,7 +73,8 @@ Arduino_ESP32RGBPanel *rgbpanel = new Arduino_ESP32RGBPanel(
   1 /* vsync_polarity */, 50 /* vsync_front_porch */, 16 /* vsync_pulse_width */, 16 /* vsync_back_porch */
   // , 1, 30000000 /* This makes fast text drawing but slow for all block fills and jitter*/
   // , 1, 6000000L /* Seems to provide best performance, no jitter, drawing not as "nice" during draw */
-  , 1, 12000000L /* Best looking triangle/circle/square/rounded square drawing */
+  ,
+  1, 12000000L /* Best looking triangle/circle/square/rounded square drawing */
 );
 
 Arduino_RGB_Display *gfx = new Arduino_RGB_Display(
@@ -326,6 +327,18 @@ void runBenchmark(void) {
 
 
 void loop(void) {
+  Serial.printf("%s\n", __FILE__);
+  Serial.printf("SDK Version       : %s\n", ESP.getSdkVersion());
+  Serial.print("Sketch MD5        : ");
+  Serial.println(ESP.getSketchMD5());
+  Serial.printf("ESP32 Chip model  : %s, Rev %d\n", ESP.getChipModel(), ESP.getChipRevision());
+
+#ifdef USB_VID
+  Serial.printf("ESP32 VID, PID    : 0x%x, 0x%x\n", USB_VID, USB_PID);
+#endif
+#ifdef USB_MANUFACTURER
+  Serial.printf("Manufacturer      : %s %s\n", USB_MANUFACTURER, USB_PRODUCT);
+#endif
   for (rotation = 0; rotation < 4; rotation++) {
     runBenchmark();
     gfx->setRotation(rotation);

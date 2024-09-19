@@ -326,6 +326,18 @@ void runBenchmark(void) {
 
 
 void loop(void) {
+  Serial.printf("%s\n", __FILE__);
+  Serial.printf("SDK Version       : %s\n", ESP.getSdkVersion());
+  Serial.print("Sketch MD5        : ");
+  Serial.println(ESP.getSketchMD5());
+  Serial.printf("ESP32 Chip model  : %s, Rev %d\n", ESP.getChipModel(), ESP.getChipRevision());
+
+#ifdef USB_VID
+  Serial.printf("ESP32 VID, PID    : 0x%x, 0x%x\n", USB_VID, USB_PID);
+#endif
+#ifdef USB_MANUFACTURER
+  Serial.printf("Manufacturer      : %s %s\n", USB_MANUFACTURER, USB_PRODUCT);
+#endif
   for (rotation = 0; rotation < 4; rotation++) {
     runBenchmark();
     gfx->setRotation(rotation);
