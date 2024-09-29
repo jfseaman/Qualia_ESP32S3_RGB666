@@ -39,6 +39,17 @@ It will take a couple itterations through bootsel/port to get the coms stabalize
 #include <fonts/FreeSerifBold12pt7b.h>
 #include <fonts/FreeSerifBold9pt7b.h>
 
+/* Definitions : COMPILER_VERSION, COMPILER_FLAGS
+	Initialize these strings per platform
+*/
+#ifndef COMPILER_VERSION 
+ #ifdef __GNUC__
+ #define COMPILER_VERSION "GCC"__VERSION__
+ #else
+ #define COMPILER_VERSION "Please put compiler version here (e.g. gcc 4.1)"
+ #endif
+#endif
+
 void generateColorWheel();
 unsigned long testFillScreenOnce(int);
 unsigned long testText(uint8_t, uint8_t);
@@ -339,6 +350,7 @@ void loop(void) {
 #ifdef USB_MANUFACTURER
   Serial.printf("Manufacturer      : %s %s\n", USB_MANUFACTURER, USB_PRODUCT);
 #endif
+	Serial.printf("Compiler version  : %s\n",COMPILER_VERSION);
   for (rotation = 0; rotation < 4; rotation++) {
     runBenchmark();
     gfx->setRotation(rotation);
